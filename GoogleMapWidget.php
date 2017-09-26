@@ -1,6 +1,6 @@
 <?php
 
-namespace common\components;
+namespace arzin\googleMap;
 
 use yii\base\InvalidConfigException;
 use yii\base\Model;
