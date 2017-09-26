@@ -1,0 +1,29 @@
+{
+    "name": "arzin90/yii2-map-widget",
+    "description": "Yii2 Google map widget",
+    "keywords": ["yii2", "map", "google", "widget"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/arzin90/yii2-map-widget"
+    },
+    "authors": [
+        {
+            "name": "Arzin Nikolyan",
+            "homepage": "https://github.com/arzin90/"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=3.7",
+        "phpunit/dbunit": ">=1.2",
+        "phpunit/phpunit-selenium": ">=1.2"
+    },
+    "autoload": {
+        "psr-4": {
+          "arzin\\googleMap\\": "src"
+        }
+    }
+}
