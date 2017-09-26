@@ -13,7 +13,7 @@ use yii\web\View;
 class GoogleMapWidget extends \yii\base\Widget
 {
     /* @var $google_api_key string  Google map api key */
-    public $google_api_key = 'AIzaSyBoVEvqNU_AP2HEjpMTWkerMfqGpOOray0';
+    public $google_api_key = 'your google map api key';
 
     /**
      * @var string $latAttribute Latitude attribute
