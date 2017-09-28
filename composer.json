@@ -14,17 +14,11 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "*",
-        "php": ">=5.4"
-    },
-    "require-dev": {
-        "phpunit/phpunit": ">=3.7",
-        "phpunit/dbunit": ">=1.2",
-        "phpunit/phpunit-selenium": ">=1.2"
-    },
-    "autoload": {
-        "psr-4": {
-          "arzin\\googleMap\\"
-        }
+    "php": ">=5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "arzin\\googlemap\\": "src"
     }
+  }
 }
