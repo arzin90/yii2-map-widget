@@ -3,17 +3,16 @@
 namespace arzin\googleMap;
 
 use yii\base\InvalidConfigException;
-use yii\base\Model;
+use yii\base\Widget;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\View;
 
-/**
- * @property Model $model base yii2 model or ActiveRecord objects
- */
-class GoogleMapWidget extends \yii\base\Widget
+class GoogleMapWidget extends Widget
 {
-    /* @var $google_api_key string  Google map api key */
-    public $google_api_key = 'your google map api key';
+    /* @var $key string Google map api key */
+    public $key;
 
     /**
      * @var string $latAttribute Latitude attribute
@@ -61,7 +60,7 @@ class GoogleMapWidget extends \yii\base\Widget
     public $zoom = null;
 
     /**
-     * @var object $model Object model
+     * @var ActiveRecord $model
      */
     public $model = null;
 
@@ -82,11 +81,21 @@ class GoogleMapWidget extends \yii\base\Widget
      */
     public $iconOptions = [];
 
+    /**
+     * @var boolean $isNewRecord
+     */
+    private $isNewRecord;
+
     public function init()
     {
         parent::init();
 
         $this->model = (isset($this->model)) ? $this->model : null;
+        $this->isNewRecord = $this->model->isNewRecord ? 1 : 0;
+
+        if (is_null($this->key)) {
+            throw new InvalidConfigException('key must be set.');
+        }
 
         if (is_null($this->model)) {
             throw new InvalidConfigException('model must be set.');
@@ -156,8 +165,11 @@ class GoogleMapWidget extends \yii\base\Widget
                 }                 
 
                 var autoComplete = new google.maps.places.Autocomplete(input);     
-                   
-                placeMarker(map.getCenter(),map);                
+                 
+                if(!$this->isNewRecord){
+                   placeMarker(map.getCenter(), map); 
+                }
+                              
                 autoComplete.bindTo('bounds', map);
 
                 autoComplete.addListener('place_changed', function() {
@@ -251,6 +263,6 @@ SCRIPT;
     private function registerAsset()
     {
         $view = $this->getView();
-        $view->registerJsFile(sprintf('https://maps.googleapis.com/maps/api/js?key=%s&libraries=places', $this->google_api_key), ['position' => View::POS_HEAD]);
+        $view->registerJsFile(sprintf('https://maps.googleapis.com/maps/api/js?key=%s&libraries=places', $this->key), ['position' => View::POS_HEAD]);
     }
 }
