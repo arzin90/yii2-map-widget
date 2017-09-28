@@ -133,6 +133,7 @@ class GoogleMapWidget extends Widget
             var input = document.getElementById('$this->address');
             var place=null;
             var image=null;
+            var address;
 
 			function initMap() {
                         
@@ -173,7 +174,7 @@ class GoogleMapWidget extends Widget
                 autoComplete.bindTo('bounds', map);
 
                 autoComplete.addListener('place_changed', function() {
-                    var address = '';
+                    address = '';
                     
                     if(marker){
                       marker.setVisible(false);
