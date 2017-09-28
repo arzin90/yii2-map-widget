@@ -1,6 +1,6 @@
 <?php
 
-namespace arzin\googleMap;
+namespace arzin\googlemap;
 
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
