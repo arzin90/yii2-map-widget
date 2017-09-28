@@ -228,7 +228,8 @@ class GoogleMapWidget extends Widget
 
                 google.maps.event.addListener(marker, 'dragend', function(e) {
                     geocodePosition(marker.getPosition());
-
+                    
+                    map.setCenter(marker.getPosition());
                     document.getElementById('$this->latAttribute').value = e.latLng.lat();
                     document.getElementById('$this->lngAttribute').value = e.latLng.lng();
                 });
